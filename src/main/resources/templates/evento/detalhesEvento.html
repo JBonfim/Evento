@@ -11,40 +11,29 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link rel="stylesheet" href="style/styleCss.css"/>
       </head>
-<body>
+	<body>
 		<header>
 		<nav class="menu">
 		    <div class="nav-wrapper">
-		      <a href="#" class="brand-logo">Lista de Eventos</a>
+		      <a href="#" class="brand-logo">Detalhes do Evento</a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left"></i>Cadastrar evento</a></li>
+		        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left"></i>Lista de evento</a></li>
 		      </ul>
 		    </div>
 		</nav>
+		
+		<div  th:each="evento : ${evento}" class="container">
+			<div class="row" >
+				<p>Nome: <span th:text="${evento.nome}"></span></p>
+				<p>Local: <span th:text="${evento.local}"></span></p>
+				<p>Data: <span th:text="${evento.data}"></span></p>
+				<p>Horario: <span th:text="${evento.horario}"></span></p>
+			</div>
+		</div>
 	
 	</header>
 	
 	
-	
-	<table class="container">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Local</th>
-				<th>Data</th>
-				<th>Horario</th>
-			</tr>
-			
-		</thead>
-		<tbody>
-			<tr th:each="evento : ${eventos}">
-				<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0,evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
-				<td><span th:text="${evento.local}"></span></td>
-				<td><span th:text="${evento.data}"></span></td>
-				<td><span th:text="${evento.horario}"></span></td>
-			</tr>
-		</tbody>
-	</table>
 	
 	
 
