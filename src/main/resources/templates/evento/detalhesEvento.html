@@ -13,14 +13,16 @@
       </head>
 	<body>
 		<header>
-		<nav class="menu">
-		    <div class="nav-wrapper">
-		      <a href="#" class="brand-logo">Detalhes do Evento</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left"></i>Lista de evento</a></li>
-		      </ul>
-		    </div>
-		</nav>
+			<nav class="menu">
+			    <div class="nav-wrapper">
+			      <a href="#" class="brand-logo">Detalhes do Evento</a>
+			      <ul id="nav-mobile" class="right hide-on-med-and-down">
+			        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left"></i>Lista de evento</a></li>
+			      </ul>
+			    </div>
+			</nav>
+		
+		</header>
 		
 		<div  th:each="evento : ${evento}" class="container">
 			<div class="row" >
@@ -41,19 +43,25 @@
 			</form>
 		</div>
 		
-	<div class="container" >
-		<h5>Lista de Convidados</h5>
-		<div class="row" th:each="convidado : ${convidados}">
-			<div class="input-field col s6" >
-				<p><span th:text="${convidado.nomeConvidado}"></span></p>
-			</div>
-			<div class="input-field col s3" >
-				<p><span th:text="${convidado.rg}"></span></p>
-			</div>
-		</div>
-	</div>
+	<h5>Lista de Convidado</h5>
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome Convidado</th>
+				<th>Rg</th>
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="convidado:${convidados}">
+				<td><span th:text="${convidado.nomeConvidado}"></span></td>
+				<td><span th:text="${convidado.rg}"></span></td>
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0,convidado.rg)).build()}"><i class="material-icons left">delete</i></a></td>
+			</tr>
+		</tbody>
+	</table>
 	
-	</header>
+	
 	
 	
 	

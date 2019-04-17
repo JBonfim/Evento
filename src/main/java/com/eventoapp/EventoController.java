@@ -40,6 +40,32 @@ public class EventoController {
 		return "redirect:/eventos";
 	}
 	
+	@RequestMapping("/deletarEvento")
+	public String deletarEvento(long codigo,RedirectAttributes attributes){
+		Evento ev = eventoRepository.findByCodigo(codigo);
+		attributes.addFlashAttribute("mensagem", "");
+		try{
+			eventoRepository.delete(ev);
+		}catch(Exception ex){
+			attributes.addFlashAttribute("mensagem", "Atenção, não foi possivel excluir o Evento. Verifique se já existe Convidados cadastrado.");
+		}
+		
+		
+		return "redirect:/eventos";
+	}
+	
+	@RequestMapping("/deletarConvidado")
+	public String deletarConvidado(String rg){
+		Convidado convidado = cr.findByRg(rg);
+		cr.delete(convidado);
+		
+		
+		Evento ev = convidado.getEvento();
+		long cod = ev.getCodigo();
+		String codigo = "" + cod;
+		return "redirect:/" + codigo;
+	}
+	
 	@RequestMapping("/eventos")
 	public ModelAndView ListaEventos(){
 		ModelAndView mv = new ModelAndView("index");
