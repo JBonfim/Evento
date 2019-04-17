@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Convidado {
 	
 	@Id
+	@NotEmpty
 	private String rg;
 	
 	@NotEmpty

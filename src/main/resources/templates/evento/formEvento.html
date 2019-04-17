@@ -16,12 +16,13 @@
 	<h1>Cadastros de Evento</h1>
 	<h3><a href="/eventos" class="waves-effect waves-ligth btn">Lista de Eventos</a></h3>
 	<div class="container">
+		<th:block th:include="mensagemValidacao"></th:block>
 		<form method="post">
-		Nome: <input type="text" value="" name="nome"/>
-		Local: <input type="text" value="" name="local"/>
-		Data: <input type="date" value="" name="data"/>
-		Horario: <input type="text" value="" name="horario"/>
-		
+			Nome: <input type="text" value="" name="nome"/>
+			Local: <input type="text" value="" name="local"/>
+			Data: <input type="date" value="" name="data"/>
+			Horario: <input type="text" value="" name="horario"/>
+			
 		<button class="waves-effect waves-ligth btn" type="submit">Salvar</button>
 	</form>
 	</div>

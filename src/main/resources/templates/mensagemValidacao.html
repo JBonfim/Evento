@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlms:th="http://thymeleaf.org"
+      xmlms:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      
+<head></head>
+<body class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+	<span th:text="${mensagem}" ></span>
+</body>
+</html>
